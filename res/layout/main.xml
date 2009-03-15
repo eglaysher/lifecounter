@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lifeLayout="http://schemas.android.com/apk/res/org.elliotglaysher.lifecounter"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:orientation="horizontal">
+    <org.elliotglaysher.lifecounter.widgets.LifeLayout
+        android:id="@+id/opponent_layout"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        lifeLayout:playerName="@string/opponent_label" />
+    <org.elliotglaysher.lifecounter.widgets.LifeLayout
+        android:id="@+id/your_layout"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        lifeLayout:playerName="@string/your_label" />
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Life Counter</string>
+    
+    <string name="opponent_label">Opponent</string>
+    <string name="your_label">You</string>
+    
+    <!-- Menu strings -->
+    <string name="new_game_label">Clear</string>
+    <string name="coin_label">Coin</string>
+    <string name="settings_label">Settings</string>
+    <string name="about_label">About</string>
+    
+    
+    <!-- Settings strings -->
+    <string name="colors">Colors</string>
+    <string name="opponent_theme">Opponent theme</string>
+    <string name="your_theme">Your theme</string>
+    <string name="input_category">Input</string>
+    <string name="delay_label">Delay</string>
+    <string name="delay_description">Delay between changing the score and recording the life change on the log</string>
+    
+    <!-- About dialog strings -->
+    <string name="about_title">About Life Counter</string>
+    <string name="about_text">\
+<p>Life Counter is a small utility to help you keep track of the score in the card game <i>Magic: The Gathering</i>.</p>
+<p>Life Counter is © 2009 Elliot Glaysher.</p>
+    </string>
+    <string name="ok_label">OK</string>
+</resources>
