@@ -130,4 +130,13 @@ public class Coin2DView extends View implements View.OnClickListener {
         running_animation = false;        
         guiThread.removeCallbacks(spinAction);
     }
+
+    public boolean getCoinValue() {
+        return coin_value;
+    }
+
+    public void setCoinValue(boolean coin_value) {
+        this.coin_value = coin_value;
+        coin_to_display = coin_value;
+    }
 }
