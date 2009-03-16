@@ -29,5 +29,12 @@
             android:text="@string/about_text_4"
             android:textSize="10sp"
             android:padding="5dip" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_text_5"
+            android:autoLink="web"
+            android:textSize="10sp"
+            android:padding="5dip" />
     </LinearLayout>
 </ScrollView>
