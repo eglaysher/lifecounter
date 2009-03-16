@@ -114,7 +114,7 @@ public class LifeCounter extends Activity {
         new AlertDialog.Builder(this)
         .setTitle(R.string.about_title)
         .setIcon(R.drawable.icon)
-        .setMessage(R.string.about_text)
+        .setView(getLayoutInflater().inflate(R.layout.about, null, false))
         .setPositiveButton(R.string.ok_label, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 dialog.dismiss();
