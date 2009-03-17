@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lifeLayout="http://schemas.android.com/apk/res/org.elliotglaysher.lifecounter"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:orientation="horizontal">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:lifeLayout="http://schemas.android.com/apk/res/org.elliotglaysher.lifecounter"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <org.elliotglaysher.lifecounter.widgets.LifeLayout
+            android:id="@+id/player_1_layout"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            lifeLayout:nameShown="false"
+            lifeLayout:playerName="@string/player_1_label" />
+        <org.elliotglaysher.lifecounter.widgets.LifeLayout
+            android:id="@+id/player_2_layout"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            lifeLayout:nameShown="false"
+            lifeLayout:playerName="@string/player_2_label" />
+    </LinearLayout>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:lifeLayout="http://schemas.android.com/apk/res/org.elliotglaysher.lifecounter"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <org.elliotglaysher.lifecounter.widgets.LifeLayout
+            android:id="@+id/player_3_layout"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            lifeLayout:nameShown="false"
+            lifeLayout:playerName="@string/player_3_label" />
+        <org.elliotglaysher.lifecounter.widgets.LifeLayout
+            android:id="@+id/player_4_layout"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            lifeLayout:nameShown="false"
+            lifeLayout:playerName="@string/player_4_label" />
+    </LinearLayout>
+</LinearLayout>

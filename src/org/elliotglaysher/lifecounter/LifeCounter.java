@@ -17,24 +17,33 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class LifeCounter extends Activity {
-    private static final String OPPONENT_LIFE_MODEL = "OPPONENT_LIFE";
-    private static final String YOUR_LIFE_MODEL = "YOUR_LIFE";
-    private LifeLayout opponentLayout;
-    private LifeLayout yourLayout;
+    static private final int MAX_PLAYERS = 4;
+    static private final String THEME_PREFERENCE_KEY[] = new String[]{
+        "player_1_theme", "player_2_theme", "player_3_theme", "player_4_theme"
+    };
+    static private final String MODEL_SAVE_KEY[] = new String[]{
+        "PLAYER_1_MODEL", "PLAYER_2_MODEL", "PLAYER_3_MODEL", "PLAYER_4_MODEL"
+    };
+    static private final String NUM_PLAYERS_KEY = "num_players";
+    
+    private int numPlayers;
+    private LifeLayout lifeLayout[] = new LifeLayout[MAX_PLAYERS];
     
     private SharedPreferences sharedPreferences;
-    
     private PowerManager.WakeLock wakeLock;
     
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        opponentLayout = (LifeLayout)findViewById(R.id.opponent_layout);
-        yourLayout = (LifeLayout)findViewById(R.id.your_layout);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        setupLayouts();
+        
+        if (savedInstanceState != null) {
+            restoreModelsFromBundle(savedInstanceState);
+        }
+        
         // Prevent the screen from totally going to sleep...
         final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag"); 
@@ -46,8 +55,18 @@ public class LifeCounter extends Activity {
     protected void onResume() {
         super.onResume();
         
-        opponentLayout.setTheme(sharedPreferences.getString("opponent_theme", "Default"));
-        yourLayout.setTheme(sharedPreferences.getString("your_theme", "Default"));
+        if (numPlayers != getNumPlayersFromPreferences()) {
+            // The order of opponents has been switched. Rehook all this stuff up.
+            numberPlayersChanged();
+        }
+        
+        for (int i = 0; i < MAX_PLAYERS; ++i) {
+            if (lifeLayout[i] != null) {
+                lifeLayout[i].setTheme(
+                        sharedPreferences.getString(THEME_PREFERENCE_KEY[i],
+                                "Black"));
+            }
+        }
 
         wakeLock.acquire();
     }
@@ -62,21 +81,13 @@ public class LifeCounter extends Activity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-
-        opponentLayout.setModelFromSave(
-                (LifeModel)savedInstanceState.getSerializable(OPPONENT_LIFE_MODEL));
-        yourLayout.setModelFromSave(
-                (LifeModel)savedInstanceState.getSerializable(YOUR_LIFE_MODEL));
+        restoreModelsFromBundle(savedInstanceState);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
-        outState.putSerializable(OPPONENT_LIFE_MODEL,
-                opponentLayout.getModelForSaving());
-        outState.putSerializable(YOUR_LIFE_MODEL,
-                yourLayout.getModelForSaving());
+        saveModelsToBundle(outState);
     }
     
     @Override
@@ -124,12 +135,79 @@ public class LifeCounter extends Activity {
     }
 
     private void newGame() {
-        opponentLayout.newGame();
-        yourLayout.newGame();
+        for (int i = 0; i < MAX_PLAYERS; ++i) {
+            if (lifeLayout[i] != null) {
+                lifeLayout[i].newGame();
+            }
+        }
     }
     
     private void commitPendingChanges() {
-        opponentLayout.commitPendingChanges();
-        yourLayout.commitPendingChanges();
+        for (int i = 0; i < MAX_PLAYERS; ++i) {
+            if (lifeLayout[i] != null) {
+                lifeLayout[i].commitPendingChanges();
+            }
+        }
+    }
+
+    private void numberPlayersChanged() {
+        Bundle b = new Bundle();
+        saveModelsToBundle(b);
+        setupLayouts();
+        restoreModelsFromBundle(b);
+    }
+
+    private void setupLayouts() {
+        numPlayers = getNumPlayersFromPreferences();
+        
+        switch (numPlayers) {
+        case 1:
+            setContentView(R.layout.main_1_player);
+            break;
+        case 2:
+            setContentView(R.layout.main_2_player);
+            break;
+        case 3:
+            setContentView(R.layout.main_3_player);
+            break;
+        case 4:
+            setContentView(R.layout.main_4_player);
+            break;
+        default:
+            setContentView(R.layout.main_2_player);
+            break;                
+        }
+        
+        lifeLayout[0] = (LifeLayout)findViewById(R.id.player_1_layout);
+        lifeLayout[1] = (LifeLayout)findViewById(R.id.player_2_layout);
+        lifeLayout[2] = (LifeLayout)findViewById(R.id.player_3_layout);
+        lifeLayout[3] = (LifeLayout)findViewById(R.id.player_4_layout);
+    }    
+
+    private int getNumPlayersFromPreferences() {        
+        try {
+            return Integer.parseInt(sharedPreferences.getString(NUM_PLAYERS_KEY, "2"));
+        } catch (NumberFormatException e) {
+            return 2;
+        }
+    }
+
+    private void saveModelsToBundle(Bundle outState) {
+        for (int i = 0; i < MAX_PLAYERS; ++i) {
+            if (lifeLayout[i] != null) {
+                outState.putSerializable(MODEL_SAVE_KEY[i],
+                        lifeLayout[i].getModelForSaving());
+            }
+        }        
+    }
+
+    private void restoreModelsFromBundle(Bundle savedInstanceState) {
+        for (int i = 0; i < MAX_PLAYERS; ++i) {
+            if (lifeLayout[i] != null &&
+                    savedInstanceState.containsKey(MODEL_SAVE_KEY[i])) {
+                lifeLayout[i].setModelFromSave(
+                        (LifeModel)savedInstanceState.getSerializable(MODEL_SAVE_KEY[i]));
+            }
+        }
     }
 }

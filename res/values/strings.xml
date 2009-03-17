@@ -2,8 +2,10 @@
 <resources>
     <string name="app_name">Life Counter</string>
     
-    <string name="opponent_label">Opponent</string>
-    <string name="your_label">You</string>
+    <string name="player_1_label">Player 1</string>
+    <string name="player_2_label">Player 2</string>
+    <string name="player_3_label">Player 3</string>
+    <string name="player_4_label">Player 4</string>
     
     <!-- Menu strings -->
     <string name="new_game_label">Clear</string>
@@ -13,9 +15,14 @@
     
     
     <!-- Settings strings -->
+    <string name="players">Players</string>
+    <string name="number_players">Number of Players</string>
+    
     <string name="colors">Colors</string>
-    <string name="opponent_theme">Opponent theme</string>
-    <string name="your_theme">Your theme</string>
+    <string name="player_1_theme">Player 1 theme</string>
+    <string name="player_2_theme">Player 2 theme</string>
+    <string name="player_3_theme">Player 3 theme</string>
+    <string name="player_4_theme">Player 4 theme</string>
     <string name="input_category">Input</string>
     <string name="delay_label">Delay</string>
     <string name="delay_description">Delay between changing the score and recording the life change on the log</string>

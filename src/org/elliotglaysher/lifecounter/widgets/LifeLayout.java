@@ -36,7 +36,11 @@ public class LifeLayout extends LinearLayout {
         if (name == null) {
             name = "???";
         }
-        ((TextView)findViewById(R.id.player_name)).setText(name);
+        TextView nameView = (TextView)findViewById(R.id.player_name); 
+        nameView.setText(name);
+        
+        int visibility = array.getBoolean(R.styleable.lifeLayout_nameShown, true) ? VISIBLE : GONE;
+        nameView.setVisibility(visibility);
         
         lifeHistory = (LifeView)findViewById(R.id.life_widget);
         spinner = (NumberPicker)findViewById(R.id.spinner_widget);

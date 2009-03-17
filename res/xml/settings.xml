@@ -2,18 +2,39 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
+        android:title="@string/players">
+        <ListPreference
+            android:key="num_players"
+            android:title="@string/number_players"
+            android:defaultValue="2"
+            android:entries="@array/num_players"
+            android:entryValues="@array/num_players" />    
+    </PreferenceCategory>
+    <PreferenceCategory
         android:title="@string/colors">
         <ListPreference
-            android:key="opponent_theme"
-            android:title="@string/opponent_theme"
+            android:key="player_1_theme"
+            android:title="@string/player_1_theme"
             android:defaultValue="Black"
             android:entries="@array/themes"
             android:entryValues="@array/themes" />
         <ListPreference
-            android:key="your_theme"
-            android:title="@string/your_theme"
+            android:key="player_2_theme"
+            android:title="@string/player_2_theme"
             android:defaultValue="Black"
             android:entries="@array/themes"
             android:entryValues="@array/themes" />
+        <ListPreference
+            android:key="player_3_theme"
+            android:title="@string/player_3_theme"
+            android:defaultValue="Black"
+            android:entries="@array/themes"
+            android:entryValues="@array/themes" />
+        <ListPreference
+            android:key="player_4_theme"
+            android:title="@string/player_4_theme"
+            android:defaultValue="Black"
+            android:entries="@array/themes"
+            android:entryValues="@array/themes" />    
     </PreferenceCategory>
 </PreferenceScreen>

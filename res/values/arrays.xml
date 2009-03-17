@@ -7,4 +7,10 @@
     <item>White</item>
     <item>Blue</item>
   </string-array>
+  <string-array name="num_players">
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+  </string-array>
 </resources>

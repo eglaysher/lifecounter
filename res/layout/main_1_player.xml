@@ -6,17 +6,11 @@
     android:layout_width="fill_parent"
     android:orientation="horizontal">
     <org.elliotglaysher.lifecounter.widgets.LifeLayout
-        android:id="@+id/opponent_layout"
+        android:id="@+id/player_1_layout"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
         android:layout_weight="1"
         android:orientation="vertical"
-        lifeLayout:playerName="@string/opponent_label" />
-    <org.elliotglaysher.lifecounter.widgets.LifeLayout
-        android:id="@+id/your_layout"
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        lifeLayout:playerName="@string/your_label" />
+        lifeLayout:nameShown="false"
+        lifeLayout:playerName="@string/player_1_label" />
 </LinearLayout>

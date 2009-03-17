@@ -2,5 +2,6 @@
 <resources>
   <declare-styleable name="lifeLayout">
     <attr name="playerName" format="string"/>
+    <attr name="nameShown" format="boolean" />
   </declare-styleable>
 </resources>
