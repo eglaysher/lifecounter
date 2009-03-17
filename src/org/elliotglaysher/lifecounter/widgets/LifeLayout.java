@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class LifeLayout extends LinearLayout {
-    static private final int MIN_LIFE = 0;
+    static private final int MIN_LIFE = -999;
     static private final int MAX_LIFE = 999;
     static private final int START_LIFE = 20;
     static private final int SPINNER_SPEED = 300;

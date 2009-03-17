@@ -19,6 +19,8 @@ package org.elliotglaysher.lifecounter.widgets;
 // Stealing this class directly from the android internal namespace because why
 // the hell didn't they ship with this public!?!?!?!
 
+// Changed to allow negative numbers.
+
 import android.content.Context;
 import android.os.Handler;
 import android.text.InputFilter;
@@ -118,7 +120,13 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
        mInflater.inflate(R.layout.number_picker, this, true);
        mHandler = new Handler();
        mInputFilter = new NumberPickerInputFilter();
-       mNumberInputFilter = new NumberRangeKeyListener();
+
+       // TODO: Make which NumberRangeKeyListener it uses selected from |attrs|
+       // if I ever make a Big Numbers Mode for Yugioh.
+       //
+       // mNumberInputFilter = new NumberRangeKeyListener();       
+
+       mNumberInputFilter = new NumberWithMinusRangeKeyListener();
        mIncrementButton = (NumberPickerButton) findViewById(R.id.increment);
        mIncrementButton.setOnClickListener(this);
        mIncrementButton.setOnLongClickListener(this);
@@ -330,9 +338,13 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
    public void cancelDecrement() {
        mDecrement = false;
    }
-   
+
    private static final char[] DIGIT_CHARACTERS = new char[] {
        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+   };
+   
+   private static final char[] DIGIT_CHARACTERS_WITH_MINUS = new char[] {
+       '-', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
    };
    
    private NumberPickerButton mIncrementButton;
@@ -403,9 +415,26 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
        }
    }
 
+   private class NumberWithMinusRangeKeyListener extends NumberRangeKeyListener {
+       @Override
+       protected char[] getAcceptedChars() {
+           return DIGIT_CHARACTERS_WITH_MINUS;
+       }
+   }
+   
    private int getSelectedPos(String str) {
        if (mDisplayedValues == null) {
-           return Integer.parseInt(str);
+           // CHANGE: Accept the '-' raw!
+           // ASSUMPTION: Any NumberFormatException will be because of a raw '-'
+           // because that's the only non-numeric character allowed into this
+           // method.
+           try {
+              return Integer.parseInt(str);
+           } catch (NumberFormatException e) {
+               // Pathological case: If they enter "5-2", we'll interpret that
+               // mess as 0. I dare you to care.
+               return 0;
+           }
        } else {
            for (int i = 0; i < mDisplayedValues.length; i++) {
                
