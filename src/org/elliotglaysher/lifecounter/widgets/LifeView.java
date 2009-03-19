@@ -19,7 +19,7 @@ import android.util.Log;
 import android.view.View;
 
 public class LifeView extends View {
-    static final private float CORNER_RADIUS = 15;
+    static final private float CORNER_RADIUS = 8;
     static final private float TEXT_OFFSET = 8;
     static final private int COLUMN_PADDING = 15;
     
@@ -120,13 +120,15 @@ public class LifeView extends View {
 
         if (model != null) {            
             FontMetrics fm = textPaint.getFontMetrics();
-            float textOffset = Math.abs(fm.ascent) + fm.descent + fm.leading;
-            final float startDrawY = getTop() + fm.descent;
+            final float textOffset = Math.abs(fm.ascent) + Math.abs(fm.descent) + Math.abs(fm.leading);
+            final int entriesInAColumn = (int)(bounds.height() / textOffset);
+            final float columnCenteringOffset = ((bounds.height() - (entriesInAColumn * textOffset)) / 2);
+            final float startDrawY = bounds.top + Math.abs(fm.ascent) + columnCenteringOffset;
+            final List<String> history = model.getHistoryList();
+            final List<Column> columns = new Vector<Column>();
+
             float drawY = startDrawY;
-            float drawX = getPaddingLeft() + TEXT_OFFSET;
-            int entriesInAColumn = (int)((getHeight() - getPaddingBottom()) / textOffset) - 1;
-            List<String> history = model.getHistoryList();
-            List<Column> columns = new Vector<Column>();
+            float drawX = bounds.left + TEXT_OFFSET;
             
             // Step 1: Separate the history list into columns and determine
             // their width.
