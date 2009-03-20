@@ -10,13 +10,13 @@
         android:textStyle="bold"
         android:paddingTop="5sp"
         android:textColor="#ffffff" />
-    <org.elliotglaysher.lifecounter.widgets.LifeView
+    <org.elliotglaysher.lifecounternonfree.widgets.LifeView
         android:id="@+id/life_widget"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:padding="5sp" />
-    <org.elliotglaysher.lifecounter.widgets.NumberPicker
+    <org.elliotglaysher.lifecounternonfree.widgets.NumberPicker
         android:id="@+id/spinner_widget"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

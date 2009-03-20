@@ -1,7 +1,7 @@
-package org.elliotglaysher.lifecounter;
+package org.elliotglaysher.lifecounternonfree;
 
-import org.elliotglaysher.lifecounter.coin2d.Coin2DActivity;
-import org.elliotglaysher.lifecounter.widgets.LifeLayout;
+import org.elliotglaysher.lifecounternonfree.coin2d.Coin2DActivity;
+import org.elliotglaysher.lifecounternonfree.widgets.LifeLayout;
 
 import android.app.Activity;
 import android.app.AlertDialog;

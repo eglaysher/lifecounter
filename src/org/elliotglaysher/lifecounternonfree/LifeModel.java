@@ -1,4 +1,4 @@
-package org.elliotglaysher.lifecounter;
+package org.elliotglaysher.lifecounternonfree;
 
 import java.io.Serializable;
 import java.util.List;

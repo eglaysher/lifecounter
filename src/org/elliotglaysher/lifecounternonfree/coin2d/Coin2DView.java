@@ -1,4 +1,4 @@
-package org.elliotglaysher.lifecounter.coin2d;
+package org.elliotglaysher.lifecounternonfree.coin2d;
 
 import java.util.Random;
 
@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 
-import org.elliotglaysher.lifecounter.R;
+import org.elliotglaysher.lifecounternonfree.R;
 
 public class Coin2DView extends View implements View.OnClickListener {
     static private final int ANIMATION_CYCLE = 15;

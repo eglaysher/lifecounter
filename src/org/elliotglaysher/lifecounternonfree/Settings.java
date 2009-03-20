@@ -1,4 +1,4 @@
-package org.elliotglaysher.lifecounter;
+package org.elliotglaysher.lifecounternonfree;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;

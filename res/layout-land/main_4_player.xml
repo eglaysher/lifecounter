@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:lifeLayout="http://schemas.android.com/apk/res/org.elliotglaysher.lifecounter"
+    xmlns:lifeLayout="http://schemas.android.com/apk/res/org.elliotglaysher.lifecounternonfree"
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
     android:orientation="horizontal">
-    <org.elliotglaysher.lifecounter.widgets.LifeLayout
+    <org.elliotglaysher.lifecounternonfree.widgets.LifeLayout
         android:id="@+id/player_1_layout"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
@@ -13,7 +13,7 @@
         android:orientation="vertical"
         lifeLayout:nameShown="true"
         lifeLayout:playerName="@string/player_1_label" />
-    <org.elliotglaysher.lifecounter.widgets.LifeLayout
+    <org.elliotglaysher.lifecounternonfree.widgets.LifeLayout
         android:id="@+id/player_2_layout"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
@@ -21,7 +21,7 @@
         android:orientation="vertical"
         lifeLayout:nameShown="true"
         lifeLayout:playerName="@string/player_2_label" />
-    <org.elliotglaysher.lifecounter.widgets.LifeLayout
+    <org.elliotglaysher.lifecounternonfree.widgets.LifeLayout
         android:id="@+id/player_3_layout"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
@@ -29,7 +29,7 @@
         android:orientation="vertical"
         lifeLayout:nameShown="true"
         lifeLayout:playerName="@string/player_3_label" />
-    <org.elliotglaysher.lifecounter.widgets.LifeLayout
+    <org.elliotglaysher.lifecounternonfree.widgets.LifeLayout
         android:id="@+id/player_4_layout"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"

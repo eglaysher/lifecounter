@@ -1,4 +1,4 @@
-package org.elliotglaysher.lifecounter.widgets;
+package org.elliotglaysher.lifecounternonfree.widgets;
 
 /*
  * Copyright (C) 2008 The Android Open Source Project
@@ -37,7 +37,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.elliotglaysher.lifecounter.R;
+import org.elliotglaysher.lifecounternonfree.R;
 
 public class NumberPicker extends LinearLayout implements OnClickListener,
        OnFocusChangeListener, OnLongClickListener {

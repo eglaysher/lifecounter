@@ -1,7 +1,7 @@
-package org.elliotglaysher.lifecounter.widgets;
+package org.elliotglaysher.lifecounternonfree.widgets;
 
-import org.elliotglaysher.lifecounter.LifeModel;
-import org.elliotglaysher.lifecounter.R;
+import org.elliotglaysher.lifecounternonfree.LifeModel;
+import org.elliotglaysher.lifecounternonfree.R;
 
 import android.content.Context;
 import android.content.res.TypedArray;

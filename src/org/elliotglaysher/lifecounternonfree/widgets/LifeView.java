@@ -1,9 +1,9 @@
-package org.elliotglaysher.lifecounter.widgets;
+package org.elliotglaysher.lifecounternonfree.widgets;
 
 import java.util.List;
 import java.util.Vector;
 
-import org.elliotglaysher.lifecounter.LifeModel;
+import org.elliotglaysher.lifecounternonfree.LifeModel;
 
 import android.content.Context;
 import android.graphics.Canvas;
