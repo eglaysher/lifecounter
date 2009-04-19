@@ -3,24 +3,20 @@ package org.elliotglaysher.lifecounternonfree.coin2d;
 import java.util.Random;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
 import org.elliotglaysher.lifecounternonfree.R;
 
-public class Coin2DView extends View implements View.OnClickListener {
-    static private final int ANIMATION_CYCLE = 15;
-    static private final int SPIN_SPEED = 600 / ANIMATION_CYCLE;
-    static private final int NORMAL_SIZE = 280;
+public class Coin2DView extends ImageView implements View.OnClickListener, AnimationListener {
     static private boolean HEADS = false;
-//    static private boolean TAILS = true;
-    
-    static private final int ANIM_STATE_SHRINK = 0;
-    static private final int ANIM_STATE_GROW = 1;
-    private int animation_state;
+    static private boolean TAILS = true;
     
     private final Handler guiThread = new Handler();
     private final Random generator = new Random();
@@ -28,40 +24,36 @@ public class Coin2DView extends View implements View.OnClickListener {
     private final Drawable heads;
     private final Drawable tails;
     
+    private final Animation shrink_animation;
+    private final Animation grow_animation;    
+    
     private boolean coin_value = HEADS;
     private boolean coin_to_display = HEADS;
 
     private int spins_remaining = 0;
-    private int spin = NORMAL_SIZE;
-    
-    private boolean running_animation = false;
     
     public Coin2DView(Context context, AttributeSet attrs) {
         super(context, attrs);        
 
         heads = getResources().getDrawable(R.drawable.penny_heads);
+        heads.setFilterBitmap(true);
         tails = getResources().getDrawable(R.drawable.penny_tails);
+        tails.setFilterBitmap(true);
+        setImageDrawable(heads);
+    
+        shrink_animation = AnimationUtils.loadAnimation(context, R.anim.coin_shrink);
+        shrink_animation.setAnimationListener(this);
+        grow_animation = AnimationUtils.loadAnimation(context, R.anim.coin_grow);
+        grow_animation.setAnimationListener(this);
         
         setOnClickListener(this);
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        int centeredX = (getWidth() / 2) - (spin / 2);
-        int centeredY = (getHeight() / 2) - (NORMAL_SIZE / 2);
-        
-        if (coin_to_display == HEADS) {
-            heads.setBounds(centeredX, centeredY, centeredX + spin, centeredY + NORMAL_SIZE);
-            heads.draw(canvas);            
-        } else {
-            tails.setBounds(centeredX, centeredY, centeredX + spin, centeredY + NORMAL_SIZE);
-            tails.draw(canvas);
-        }
-    }
-
     public void onClick(View v) {
-        if (!running_animation) {
+        Animation a = getAnimation();
+        if (a == null || a.hasEnded()) {
             boolean new_coin_value = generator.nextBoolean();
+            startAnimation(shrink_animation);
             
             spins_remaining = 1;
             if (new_coin_value == coin_value)
@@ -70,61 +62,12 @@ public class Coin2DView extends View implements View.OnClickListener {
                 spins_remaining += 2;
             
             coin_value = new_coin_value;
-            animation_state = ANIM_STATE_SHRINK;
-            
-            invalidate();
-
-            running_animation = true;
-            guiThread.postDelayed(spinAction, ANIMATION_CYCLE);
+            startAnimation(shrink_animation);
         }
     }
-    
-    private Runnable spinAction = new Runnable() {
-        public void run() {
-            boolean done = updateAnimation();
-            if (!done) {
-                guiThread.postDelayed(spinAction, ANIMATION_CYCLE);
-            } else {
-                running_animation = false;
-            }
-        }
-    };
 
-    public boolean updateAnimation() {
-        boolean done = false;
-        if (animation_state == ANIM_STATE_SHRINK) {
-            spin -= SPIN_SPEED;
-            
-            if (spin <= 0) {
-                spin = 0;
-                animation_state = ANIM_STATE_GROW;
-                coin_to_display = !coin_to_display;
-            }
-        } else if (animation_state == ANIM_STATE_GROW) {
-            spin += SPIN_SPEED;
-            
-            if (spin >= NORMAL_SIZE) {
-                spin = NORMAL_SIZE;
-                
-                spins_remaining--;
-                if (spins_remaining <= 0) {
-                    spins_remaining = 0;
-                    done = true;
-                } else {
-                    animation_state = ANIM_STATE_SHRINK;
-                }
-            }
-        }
-        
-        invalidate();
-        return done;
-    }
-    
     public void stopAnimation() {
-        spin = NORMAL_SIZE;
         coin_to_display = coin_value;
-        running_animation = false;        
-        guiThread.removeCallbacks(spinAction);
     }
 
     public boolean getCoinValue() {
@@ -135,4 +78,35 @@ public class Coin2DView extends View implements View.OnClickListener {
         this.coin_value = coin_value;
         coin_to_display = coin_value;
     }
+
+    @Override
+    public void onAnimationEnd(final Animation animation) {
+        guiThread.post(new Runnable() {
+            public void run() {
+                if (spins_remaining > 0) {                    
+                    if (animation == shrink_animation) {
+                        if (coin_to_display == HEADS) {
+                            setImageDrawable(tails);
+                            coin_to_display = TAILS;
+                        } else {
+                            setImageDrawable(heads);                                                        
+                            coin_to_display = HEADS;
+                        }
+                        
+                        startAnimation(grow_animation);
+                        spins_remaining--;
+                    } else {
+                        startAnimation(shrink_animation);
+                    }                    
+                }
+            }
+        });
+    }
+    
+    // Ignored AnimationListener methods.
+    @Override
+    public void onAnimationRepeat(Animation animation) {  }
+    
+    @Override
+    public void onAnimationStart(Animation animation) {  }
 }
