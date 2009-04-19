@@ -15,7 +15,8 @@
                   android:label="@string/settings_label">
         </activity>        
         <activity android:name=".coin2d.Coin2DActivity"
-                  android:label="@string/coin_label">          
+                  android:label="@string/coin_label"
+                  android:theme="@android:style/Theme.Translucent" >
         </activity>
     </application>
     

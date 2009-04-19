@@ -40,17 +40,13 @@ public class Coin2DView extends View implements View.OnClickListener {
         super(context, attrs);        
 
         heads = getResources().getDrawable(R.drawable.penny_heads);
-        heads.setFilterBitmap(true);
         tails = getResources().getDrawable(R.drawable.penny_tails);
-        tails.setFilterBitmap(true);
         
         setOnClickListener(this);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawARGB(128, 128, 128, 128);
-        
         int centeredX = (getWidth() / 2) - (spin / 2);
         int centeredY = (getHeight() / 2) - (NORMAL_SIZE / 2);
         
