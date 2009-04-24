@@ -16,7 +16,7 @@
             android:title="@string/player_1_label">
             <PreferenceCategory
                 android:title="@string/player_1_label">
-                <EditTextPreference
+                <org.elliotglaysher.lifecounternonfree.widgets.DefaultEditTextPreference
                     android:key="player_1_name"
                     android:title="@string/player_name_label"
                     android:defaultValue="@string/player_1_label" />                    
@@ -33,7 +33,7 @@
             android:title="@string/player_2_label">
             <PreferenceCategory
                 android:title="@string/player_2_label">
-                <EditTextPreference
+                <org.elliotglaysher.lifecounternonfree.widgets.DefaultEditTextPreference
                     android:key="player_2_name"
                     android:title="@string/player_name_label"
                     android:defaultValue="@string/player_2_label" />                    
@@ -50,7 +50,7 @@
             android:title="@string/player_3_label">
             <PreferenceCategory
                 android:title="@string/player_3_label">
-                <EditTextPreference
+                <org.elliotglaysher.lifecounternonfree.widgets.DefaultEditTextPreference
                     android:key="player_3_name"
                     android:title="@string/player_name_label"
                     android:defaultValue="@string/player_3_label" />                    
@@ -67,7 +67,7 @@
             android:title="@string/player_4_label">
             <PreferenceCategory
                 android:title="@string/player_4_label">
-                <EditTextPreference
+                <org.elliotglaysher.lifecounternonfree.widgets.DefaultEditTextPreference
                     android:key="player_4_name"
                     android:title="@string/player_name_label"
                     android:defaultValue="@string/player_4_label" />                    
