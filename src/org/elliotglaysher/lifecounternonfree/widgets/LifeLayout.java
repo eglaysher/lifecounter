@@ -22,6 +22,7 @@ public class LifeLayout extends LinearLayout {
     private NumberPicker spinner;
     private Handler guiThread;
     private LifeModel life;
+    private TextView nameView;
     
     public LifeLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -32,12 +33,7 @@ public class LifeLayout extends LinearLayout {
         // Read the name that's supposed to go on this column
         TypedArray array = context.obtainStyledAttributes(
                 attrs, R.styleable.lifeLayout, 0, 0);
-        String name = array.getString(R.styleable.lifeLayout_playerName);
-        if (name == null) {
-            name = "???";
-        }
-        TextView nameView = (TextView)findViewById(R.id.player_name); 
-        nameView.setText(name);
+        nameView = (TextView)findViewById(R.id.player_name); 
         
         int visibility = array.getBoolean(R.styleable.lifeLayout_nameShown, true) ? VISIBLE : GONE;
         nameView.setVisibility(visibility);
@@ -66,6 +62,10 @@ public class LifeLayout extends LinearLayout {
 
     public void setTheme(String theme) {
         lifeHistory.setTheme(theme);
+    }
+    
+    public void setName(String name) {
+        nameView.setText(name);        
     }
     
     public LifeModel getModelForSaving() {

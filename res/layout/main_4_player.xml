@@ -18,16 +18,14 @@
             android:layout_width="fill_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            lifeLayout:nameShown="false"
-            lifeLayout:playerName="@string/player_1_label" />
+            lifeLayout:nameShown="false" />
         <org.elliotglaysher.lifecounternonfree.widgets.LifeLayout
             android:id="@+id/player_2_layout"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            lifeLayout:nameShown="false"
-            lifeLayout:playerName="@string/player_2_label" />
+            lifeLayout:nameShown="false" />
     </LinearLayout>
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -42,15 +40,13 @@
             android:layout_width="fill_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            lifeLayout:nameShown="false"
-            lifeLayout:playerName="@string/player_3_label" />
+            lifeLayout:nameShown="false" />
         <org.elliotglaysher.lifecounternonfree.widgets.LifeLayout
             android:id="@+id/player_4_layout"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            lifeLayout:nameShown="false"
-            lifeLayout:playerName="@string/player_4_label" />
+            lifeLayout:nameShown="false" />
     </LinearLayout>
 </LinearLayout>

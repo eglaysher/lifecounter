@@ -18,11 +18,11 @@
     <string name="players">Players</string>
     <string name="number_players">Number of Players</string>
     
-    <string name="colors">Colors</string>
-    <string name="player_1_theme">Player 1 theme</string>
-    <string name="player_2_theme">Player 2 theme</string>
-    <string name="player_3_theme">Player 3 theme</string>
-    <string name="player_4_theme">Player 4 theme</string>
+    <string name="player_preferences">Player Preferences</string>
+    
+    <string name="player_theme_label">Player Theme</string>
+    <string name="player_name_label">Player Name</string>
+    
     <string name="input_category">Input</string>
     <string name="delay_label">Delay</string>
     <string name="delay_description">Delay between changing the score and recording the life change on the log</string>

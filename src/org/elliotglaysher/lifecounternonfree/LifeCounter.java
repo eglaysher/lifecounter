@@ -21,10 +21,18 @@ public class LifeCounter extends Activity {
     static private final String THEME_PREFERENCE_KEY[] = new String[]{
         "player_1_theme", "player_2_theme", "player_3_theme", "player_4_theme"
     };
+    static private final String NAME_PREFERENCE_KEY[] = new String[]{
+        "player_1_name", "player_2_name", "player_3_name", "player_4_name"
+    };
     static private final String MODEL_SAVE_KEY[] = new String[]{
         "PLAYER_1_MODEL", "PLAYER_2_MODEL", "PLAYER_3_MODEL", "PLAYER_4_MODEL"
     };
     static private final String NUM_PLAYERS_KEY = "num_players";
+    
+    static private final int DEFAULT_NAME_KEY[] = new int[]{
+        R.string.player_1_label, R.string.player_2_label,
+        R.string.player_3_label, R.string.player_4_label
+    };
     
     private int numPlayers;
     private LifeLayout lifeLayout[] = new LifeLayout[MAX_PLAYERS];
@@ -64,7 +72,11 @@ public class LifeCounter extends Activity {
             if (lifeLayout[i] != null) {
                 lifeLayout[i].setTheme(
                         sharedPreferences.getString(THEME_PREFERENCE_KEY[i],
-                                "Black"));
+                        "Black"));
+
+                lifeLayout[i].setName(
+                        sharedPreferences.getString(NAME_PREFERENCE_KEY[i],
+                        getString(DEFAULT_NAME_KEY[i])));
             }
         }
 

@@ -11,14 +11,12 @@
         android:layout_width="fill_parent"
         android:layout_weight="1"
         android:orientation="vertical"
-        lifeLayout:nameShown="true"
-        lifeLayout:playerName="@string/player_1_label" />
+        lifeLayout:nameShown="true" />
     <org.elliotglaysher.lifecounternonfree.widgets.LifeLayout
         android:id="@+id/player_2_layout"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
         android:layout_weight="1"
         android:orientation="vertical"
-        lifeLayout:nameShown="true"
-        lifeLayout:playerName="@string/player_2_label" />
+        lifeLayout:nameShown="true" />
 </LinearLayout>

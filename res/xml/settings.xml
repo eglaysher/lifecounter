@@ -11,30 +11,74 @@
             android:entryValues="@array/num_players" />    
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="@string/colors">
-        <ListPreference
-            android:key="player_1_theme"
-            android:title="@string/player_1_theme"
-            android:defaultValue="Black"
-            android:entries="@array/themes"
-            android:entryValues="@array/themes" />
-        <ListPreference
-            android:key="player_2_theme"
-            android:title="@string/player_2_theme"
-            android:defaultValue="Black"
-            android:entries="@array/themes"
-            android:entryValues="@array/themes" />
-        <ListPreference
-            android:key="player_3_theme"
-            android:title="@string/player_3_theme"
-            android:defaultValue="Black"
-            android:entries="@array/themes"
-            android:entryValues="@array/themes" />
-        <ListPreference
-            android:key="player_4_theme"
-            android:title="@string/player_4_theme"
-            android:defaultValue="Black"
-            android:entries="@array/themes"
-            android:entryValues="@array/themes" />    
+        android:title="@string/player_preferences">
+        <PreferenceScreen
+            android:title="@string/player_1_label">
+            <PreferenceCategory
+                android:title="@string/player_1_label">
+                <EditTextPreference
+                    android:key="player_1_name"
+                    android:title="@string/player_name_label"
+                    android:defaultValue="@string/player_1_label" />                    
+                <ListPreference
+                    android:key="player_1_theme"
+                    android:title="@string/player_theme_label"
+                    android:defaultValue="Black"
+                    android:entries="@array/themes"
+                    android:entryValues="@array/themes" />
+            </PreferenceCategory>
+        </PreferenceScreen>    
+
+        <PreferenceScreen
+            android:title="@string/player_2_label">
+            <PreferenceCategory
+                android:title="@string/player_2_label">
+                <EditTextPreference
+                    android:key="player_2_name"
+                    android:title="@string/player_name_label"
+                    android:defaultValue="@string/player_2_label" />                    
+                <ListPreference
+                    android:key="player_2_theme"
+                    android:title="@string/player_theme_label"
+                    android:defaultValue="Black"
+                    android:entries="@array/themes"
+                    android:entryValues="@array/themes" />
+            </PreferenceCategory>
+        </PreferenceScreen>    
+
+        <PreferenceScreen
+            android:title="@string/player_3_label">
+            <PreferenceCategory
+                android:title="@string/player_3_label">
+                <EditTextPreference
+                    android:key="player_3_name"
+                    android:title="@string/player_name_label"
+                    android:defaultValue="@string/player_3_label" />                    
+                <ListPreference
+                    android:key="player_3_theme"
+                    android:title="@string/player_theme_label"
+                    android:defaultValue="Black"
+                    android:entries="@array/themes"
+                    android:entryValues="@array/themes" />
+            </PreferenceCategory>
+        </PreferenceScreen>    
+
+        <PreferenceScreen
+            android:title="@string/player_4_label">
+            <PreferenceCategory
+                android:title="@string/player_4_label">
+                <EditTextPreference
+                    android:key="player_4_name"
+                    android:title="@string/player_name_label"
+                    android:defaultValue="@string/player_4_label" />                    
+                <ListPreference
+                    android:key="player_4_theme"
+                    android:title="@string/player_theme_label"
+                    android:defaultValue="Black"
+                    android:entries="@array/themes"
+                    android:entryValues="@array/themes" />
+            </PreferenceCategory>
+        </PreferenceScreen>    
+
     </PreferenceCategory>
 </PreferenceScreen>
