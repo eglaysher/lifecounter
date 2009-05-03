@@ -9,6 +9,7 @@
     <EditText android:id="@+id/name_preference_field"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:singleLine="true"
         android:layout_weight="1" />
     <ImageButton android:id="@+id/default_name_button"
         android:layout_width="wrap_content"
