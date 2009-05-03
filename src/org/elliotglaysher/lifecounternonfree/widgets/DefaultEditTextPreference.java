@@ -36,7 +36,7 @@ import android.widget.ImageButton;
 /**
  * A forked version of EditTextPreference that also has a default button.
  */
-class DefaultEditTextPreference extends DialogPreference {
+public class DefaultEditTextPreference extends DialogPreference {
     private EditText mEditText;
     private String mDefaultText;
     private String mText;
@@ -98,6 +98,13 @@ class DefaultEditTextPreference extends DialogPreference {
     }
     
     @Override
+	public void setDefaultValue(Object defaultValue) {
+		super.setDefaultValue(defaultValue);
+
+        mDefaultText = (String)defaultValue;		
+    }
+
+	@Override
     protected void onDialogClosed(boolean positiveResult) {
         super.onDialogClosed(positiveResult);
         

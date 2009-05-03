@@ -16,26 +16,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class LifeCounter extends Activity {
-    static private final int MAX_PLAYERS = 4;
-    static private final String THEME_PREFERENCE_KEY[] = new String[]{
-        "player_1_theme", "player_2_theme", "player_3_theme", "player_4_theme"
-    };
-    static private final String NAME_PREFERENCE_KEY[] = new String[]{
-        "player_1_name", "player_2_name", "player_3_name", "player_4_name"
-    };
-    static private final String MODEL_SAVE_KEY[] = new String[]{
-        "PLAYER_1_MODEL", "PLAYER_2_MODEL", "PLAYER_3_MODEL", "PLAYER_4_MODEL"
-    };
-    static private final String NUM_PLAYERS_KEY = "num_players";
-    
-    static private final int DEFAULT_NAME_KEY[] = new int[]{
-        R.string.player_1_label, R.string.player_2_label,
-        R.string.player_3_label, R.string.player_4_label
-    };
-    
+public class LifeCounter extends Activity {    
     private int numPlayers;
-    private LifeLayout lifeLayout[] = new LifeLayout[MAX_PLAYERS];
+    private LifeLayout lifeLayout[] = new LifeLayout[Constants.MAX_PLAYERS];
     
     private SharedPreferences sharedPreferences;
     private PowerManager.WakeLock wakeLock;
@@ -68,15 +51,15 @@ public class LifeCounter extends Activity {
             numberPlayersChanged();
         }
         
-        for (int i = 0; i < MAX_PLAYERS; ++i) {
+        for (int i = 0; i < Constants.MAX_PLAYERS; ++i) {
             if (lifeLayout[i] != null) {
                 lifeLayout[i].setTheme(
-                        sharedPreferences.getString(THEME_PREFERENCE_KEY[i],
+                        sharedPreferences.getString(Constants.THEME_PREFERENCE_KEY[i],
                         "Black"));
 
                 lifeLayout[i].setName(
-                        sharedPreferences.getString(NAME_PREFERENCE_KEY[i],
-                        getString(DEFAULT_NAME_KEY[i])));
+                        sharedPreferences.getString(Constants.NAME_PREFERENCE_KEY[i],
+                        getString(Constants.DEFAULT_NAME_KEY[i])));
             }
         }
 
@@ -147,7 +130,7 @@ public class LifeCounter extends Activity {
     }
 
     private void newGame() {
-        for (int i = 0; i < MAX_PLAYERS; ++i) {
+        for (int i = 0; i < Constants.MAX_PLAYERS; ++i) {
             if (lifeLayout[i] != null) {
                 lifeLayout[i].newGame();
             }
@@ -155,7 +138,7 @@ public class LifeCounter extends Activity {
     }
     
     private void commitPendingChanges() {
-        for (int i = 0; i < MAX_PLAYERS; ++i) {
+        for (int i = 0; i < Constants.MAX_PLAYERS; ++i) {
             if (lifeLayout[i] != null) {
                 lifeLayout[i].commitPendingChanges();
             }
@@ -198,27 +181,27 @@ public class LifeCounter extends Activity {
 
     private int getNumPlayersFromPreferences() {        
         try {
-            return Integer.parseInt(sharedPreferences.getString(NUM_PLAYERS_KEY, "2"));
+            return Integer.parseInt(sharedPreferences.getString(Constants.NUM_PLAYERS_KEY, "2"));
         } catch (NumberFormatException e) {
             return 2;
         }
     }
 
     private void saveModelsToBundle(Bundle outState) {
-        for (int i = 0; i < MAX_PLAYERS; ++i) {
+        for (int i = 0; i < Constants.MAX_PLAYERS; ++i) {
             if (lifeLayout[i] != null) {
-                outState.putSerializable(MODEL_SAVE_KEY[i],
+                outState.putSerializable(Constants.MODEL_SAVE_KEY[i],
                         lifeLayout[i].getModelForSaving());
             }
         }        
     }
 
     private void restoreModelsFromBundle(Bundle savedInstanceState) {
-        for (int i = 0; i < MAX_PLAYERS; ++i) {
+        for (int i = 0; i < Constants.MAX_PLAYERS; ++i) {
             if (lifeLayout[i] != null &&
-                    savedInstanceState.containsKey(MODEL_SAVE_KEY[i])) {
+                    savedInstanceState.containsKey(Constants.MODEL_SAVE_KEY[i])) {
                 lifeLayout[i].setModelFromSave(
-                        (LifeModel)savedInstanceState.getSerializable(MODEL_SAVE_KEY[i]));
+                        (LifeModel)savedInstanceState.getSerializable(Constants.MODEL_SAVE_KEY[i]));
             }
         }
     }
