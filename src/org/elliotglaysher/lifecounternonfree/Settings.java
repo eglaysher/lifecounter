@@ -10,34 +10,36 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 
-public class Settings extends PreferenceActivity
-		implements SharedPreferences.OnSharedPreferenceChangeListener {    
-	private SharedPreferences sharedPreferences;
+public class Settings extends PreferenceActivity implements
+        SharedPreferences.OnSharedPreferenceChangeListener {
+    private SharedPreferences sharedPreferences;
 
-	@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
-        
-        setPreferenceScreen(createPreferenceHierarchy());
-	}
 
-	@Override
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-			String key) {
-		// Regenerate when something changed.
-		setPreferenceScreen(createPreferenceHierarchy());
-	}
-	
+        setPreferenceScreen(createPreferenceHierarchy());
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+            String key) {
+        // Regenerate when something changed.
+        setPreferenceScreen(createPreferenceHierarchy());
+    }
+
     private PreferenceScreen createPreferenceHierarchy() {
         // Root
-        PreferenceScreen root = getPreferenceManager().createPreferenceScreen(this);
+        PreferenceScreen root = getPreferenceManager().createPreferenceScreen(
+                this);
+        root.setTitle(R.string.settings_label);
 
         // General preferences
-        PreferenceCategory player_preferences = new PreferenceCategory(this);
-        player_preferences.setTitle(R.string.player_preferences);
-        root.addPreference(player_preferences);
+        PreferenceCategory general_preferences = new PreferenceCategory(this);
+        general_preferences.setTitle(R.string.general);
+        root.addPreference(general_preferences);
 
         ListPreference num_players = new ListPreference(this);
         num_players.setEntries(R.array.num_players);
@@ -46,27 +48,32 @@ public class Settings extends PreferenceActivity
         num_players.setKey(Constants.NUM_PLAYERS_KEY);
         num_players.setTitle(R.string.number_players);
         num_players.setDefaultValue("2");
-        player_preferences.addPreference(num_players);
-        
-        int number_of_players = getNumPlayersFromPreferences(); 
+        general_preferences.addPreference(num_players);
+
+        PreferenceCategory player_preferences = new PreferenceCategory(this);
+        player_preferences.setTitle(R.string.player_preferences);
+        root.addPreference(player_preferences);
+
+        int number_of_players = getNumPlayersFromPreferences();
         for (int i = 0; i < number_of_players; ++i) {
-        	PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(this);
-        	screen.setKey(Constants.SCREEN_PREFERENCE_KEY[i]);
-        	screen.setTitle(Constants.DEFAULT_NAME_KEY[i]);
-        	player_preferences.addPreference(screen);
-        	
-        	PreferenceCategory per_player = new PreferenceCategory(this);
-        	per_player.setKey(Constants.CATEGORY_PREFERENCE_KEY[i]);
-        	per_player.setTitle(Constants.DEFAULT_NAME_KEY[i]);
-        	screen.addPreference(per_player);        	
-        	
-        	DefaultEditTextPreference name = new DefaultEditTextPreference(this);
-        	name.setDialogTitle(R.string.player_name_label);
-        	name.setKey(Constants.NAME_PREFERENCE_KEY[i]);
-        	name.setTitle(R.string.player_name_label);
-        	name.setDefaultValue(getString(Constants.DEFAULT_NAME_KEY[i]));
-        	per_player.addPreference(name);
-        	
+            PreferenceScreen screen = getPreferenceManager()
+                    .createPreferenceScreen(this);
+            screen.setKey(Constants.SCREEN_PREFERENCE_KEY[i]);
+            screen.setTitle(Constants.DEFAULT_NAME_KEY[i]);
+            player_preferences.addPreference(screen);
+
+            PreferenceCategory per_player = new PreferenceCategory(this);
+            per_player.setKey(Constants.CATEGORY_PREFERENCE_KEY[i]);
+            per_player.setTitle(Constants.DEFAULT_NAME_KEY[i]);
+            screen.addPreference(per_player);
+
+            DefaultEditTextPreference name = new DefaultEditTextPreference(this);
+            name.setDialogTitle(R.string.player_name_label);
+            name.setKey(Constants.NAME_PREFERENCE_KEY[i]);
+            name.setTitle(R.string.player_name_label);
+            name.setDefaultValue(getString(Constants.DEFAULT_NAME_KEY[i]));
+            per_player.addPreference(name);
+
             ListPreference theme = new ListPreference(this);
             theme.setEntries(R.array.themes);
             theme.setEntryValues(R.array.themes);
@@ -74,15 +81,16 @@ public class Settings extends PreferenceActivity
             theme.setKey(Constants.THEME_PREFERENCE_KEY[i]);
             theme.setTitle(R.string.player_theme_label);
             theme.setDefaultValue("Black");
-            per_player.addPreference(theme);        	
+            per_player.addPreference(theme);
         }
 
         return root;
     }
 
-    private int getNumPlayersFromPreferences() {        
+    private int getNumPlayersFromPreferences() {
         try {
-            return Integer.parseInt(sharedPreferences.getString(Constants.NUM_PLAYERS_KEY, "2"));
+            return Integer.parseInt(sharedPreferences.getString(
+                    Constants.NUM_PLAYERS_KEY, "2"));
         } catch (NumberFormatException e) {
             return 2;
         }

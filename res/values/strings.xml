@@ -15,6 +15,7 @@
     
     
     <!-- Settings strings -->
+    <string name="general">General Preferences</string>
     <string name="players">Players</string>
     <string name="number_players">Number of Players</string>
     
