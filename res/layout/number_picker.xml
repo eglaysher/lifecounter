@@ -30,6 +30,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:singleLine="true"
+            android:editable="false"
+            android:focusable="false"
             style="?android:attr/textAppearanceLargeInverse"
             android:textSize="30sp"
             android:background="@drawable/timepicker_input"
