@@ -1,5 +1,3 @@
-package org.elliotglaysher.lifecounternonfree.widgets;
-
 /*
  * Copyright (C) 2008 The Android Open Source Project
  *
@@ -15,6 +13,7 @@ package org.elliotglaysher.lifecounternonfree.widgets;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.elliotglaysher.lifecounternonfree.widgets;
 
 // Stealing this class directly from the android internal namespace because why
 // the hell didn't they ship with this public!?!?!?!
