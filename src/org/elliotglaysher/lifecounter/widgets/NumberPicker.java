@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.elliotglaysher.lifecounternonfree.widgets;
+package org.elliotglaysher.lifecounter.widgets;
 
 // Stealing this class directly from the android internal namespace because why
 // the hell didn't they ship with this public!?!?!?!
@@ -36,7 +36,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.elliotglaysher.lifecounternonfree.R;
+import org.elliotglaysher.lifecounter.R;
 
 public class NumberPicker extends LinearLayout implements OnClickListener,
        OnFocusChangeListener, OnLongClickListener {

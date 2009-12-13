@@ -1,4 +1,4 @@
-package org.elliotglaysher.lifecounternonfree.widgets;
+package org.elliotglaysher.lifecounter.widgets;
 
 /*
  * Copyright (C) 2008 The Android Open Source Project
@@ -25,7 +25,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.ImageButton;
 
-import org.elliotglaysher.lifecounternonfree.R;
+import org.elliotglaysher.lifecounter.R;
 
 /**
  * This class exists purely to cancel long click events.

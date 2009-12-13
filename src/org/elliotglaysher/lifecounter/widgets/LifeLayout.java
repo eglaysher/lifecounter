@@ -14,10 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.elliotglaysher.lifecounternonfree.widgets;
+package org.elliotglaysher.lifecounter.widgets;
 
-import org.elliotglaysher.lifecounternonfree.LifeModel;
-import org.elliotglaysher.lifecounternonfree.R;
+import org.elliotglaysher.lifecounter.LifeModel;
+import org.elliotglaysher.lifecounter.R;
 
 import android.content.Context;
 import android.content.res.TypedArray;

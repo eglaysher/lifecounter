@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.elliotglaysher.lifecounternonfree.coin2d;
+package org.elliotglaysher.lifecounter.coin2d;
 
 import java.util.Random;
 
@@ -28,7 +28,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 
-import org.elliotglaysher.lifecounternonfree.R;
+import org.elliotglaysher.lifecounter.R;
 
 public class Coin2DView extends ImageView implements View.OnClickListener, AnimationListener {
     static private boolean HEADS = false;

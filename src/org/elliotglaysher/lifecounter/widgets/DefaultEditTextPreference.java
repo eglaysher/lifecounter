@@ -17,9 +17,9 @@
 // Modifications to have an [X] button which resets the text entry to the
 // default button.
 
-package org.elliotglaysher.lifecounternonfree.widgets;
+package org.elliotglaysher.lifecounter.widgets;
 
-import org.elliotglaysher.lifecounternonfree.R;
+import org.elliotglaysher.lifecounter.R;
 
 import android.content.Context;
 import android.content.SharedPreferences;
