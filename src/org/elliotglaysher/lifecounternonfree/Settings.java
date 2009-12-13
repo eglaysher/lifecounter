@@ -92,7 +92,7 @@ public class Settings extends PreferenceActivity implements
 
             ListPreference theme = new ListPreference(this);
             theme.setEntries(R.array.themes);
-            theme.setEntryValues(R.array.themes);
+            theme.setEntryValues(R.array.theme_values);
             theme.setDialogTitle(R.string.player_theme_label);
             theme.setKey(Constants.THEME_PREFERENCE_KEY[i]);
             theme.setTitle(R.string.player_theme_label);

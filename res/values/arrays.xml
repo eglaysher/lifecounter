@@ -6,6 +6,33 @@
     <item>Green</item>
     <item>White</item>
     <item>Blue</item>
+    <item>Blue / Black</item>
+    <item>Red / White</item>
+    <item>Green / White</item>
+    <item>Black / Green</item>
+    <item>White / Black</item>
+    <item>Blue / Red</item>
+    <item>Red / Green</item>
+    <item>White / Blue</item>
+    <item>Black / Red</item>
+    <item>Green / Blue</item>
+  </string-array>
+  <string-array name="theme_values">
+    <item>Black</item>
+    <item>Red</item>
+    <item>Green</item>
+    <item>White</item>
+    <item>Blue</item>
+    <item>BlueBlack</item>
+    <item>RedWhite</item>
+    <item>GreenWhite</item>
+    <item>BlackGreen</item>
+    <item>WhiteBlack</item>
+    <item>BlueRed</item>
+    <item>RedGreen</item>
+    <item>WhiteBlue</item>
+    <item>BlackRed</item>
+    <item>GreenBlue</item>
   </string-array>
   <string-array name="num_players">
     <item>1</item>

@@ -44,7 +44,7 @@ public class LifeCounter extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
+        
         setupLayouts();
         
         if (savedInstanceState != null) {
