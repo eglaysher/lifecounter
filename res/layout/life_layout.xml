@@ -8,6 +8,7 @@
         android:layout_width="fill_parent"
         android:gravity="center_horizontal"
         android:textStyle="bold"
+        android:textSize="@dimen/player_font_size"
         android:paddingTop="5sp"
         android:textColor="#ffffff" />
     <org.elliotglaysher.lifecounter.widgets.LifeView
