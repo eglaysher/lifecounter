@@ -28,53 +28,60 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
+import android.support.v4.view.MenuCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class LifeCounter extends Activity {    
+public class LifeCounter extends Activity {
     private int numPlayers;
-    private LifeLayout lifeLayout[] = new LifeLayout[Constants.MAX_PLAYERS];
-    
+    private final LifeLayout lifeLayout[] = new LifeLayout[Constants.MAX_PLAYERS];
+
     private SharedPreferences sharedPreferences;
     private PowerManager.WakeLock wakeLock;
-    
+
+    // Defined in Honeycomb SDK, but we want to be compatible.
+    public static final int SHOW_AS_ACTION_IF_ROOM = 1;
+    public static final int SHOW_AS_ACTION_WITH_TEXT = 4;
+    public static final int SHOW_AS_ACTION = SHOW_AS_ACTION_IF_ROOM
+            | SHOW_AS_ACTION_WITH_TEXT;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        
+
         setupLayouts();
-        
+
         if (savedInstanceState != null) {
             restoreModelsFromBundle(savedInstanceState);
         }
-        
+
         // Prevent the screen from totally going to sleep...
         final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag"); 
-        
+        wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag");
+
         newGame();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        
+
         if (numPlayers != getNumPlayersFromPreferences()) {
-            // The order of opponents has been switched. Rehook all this stuff up.
+            // The order of opponents has been switched. Rehook all this stuff
+            // up.
             numberPlayersChanged();
         }
-        
+
         for (int i = 0; i < Constants.MAX_PLAYERS; ++i) {
             if (lifeLayout[i] != null) {
-                lifeLayout[i].setTheme(
-                        sharedPreferences.getString(Constants.THEME_PREFERENCE_KEY[i],
-                        "Black"));
+                lifeLayout[i].setTheme(sharedPreferences.getString(
+                        Constants.THEME_PREFERENCE_KEY[i], "Black"));
 
-                lifeLayout[i].setName(
-                        sharedPreferences.getString(Constants.NAME_PREFERENCE_KEY[i],
+                lifeLayout[i].setName(sharedPreferences.getString(
+                        Constants.NAME_PREFERENCE_KEY[i],
                         getString(Constants.DEFAULT_NAME_KEY[i])));
             }
         }
@@ -85,10 +92,10 @@ public class LifeCounter extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        
+
         wakeLock.release();
     }
-    
+
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
@@ -100,18 +107,24 @@ public class LifeCounter extends Activity {
         super.onSaveInstanceState(outState);
         saveModelsToBundle(outState);
     }
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
+
+        MenuCompat.setShowAsAction(menu.findItem(R.id.new_game_menu),
+                SHOW_AS_ACTION);
+        MenuCompat.setShowAsAction(menu.findItem(R.id.coin_menu),
+                SHOW_AS_ACTION);
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
         case R.id.new_game_menu:
             newGame();
             return true;
@@ -131,18 +144,18 @@ public class LifeCounter extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-    
+
     private void showAboutBox() {
-        new AlertDialog.Builder(this)
-        .setTitle(R.string.about_title)
-        .setIcon(R.drawable.icon)
-        .setView(getLayoutInflater().inflate(R.layout.about, null, false))
-        .setPositiveButton(R.string.ok_label, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                dialog.dismiss();
-            }
-        })
-        .show();
+        new AlertDialog.Builder(this).setTitle(R.string.about_title).setIcon(
+                R.drawable.icon).setView(
+                getLayoutInflater().inflate(R.layout.about, null, false))
+                .setPositiveButton(R.string.ok_label,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                    int whichButton) {
+                                dialog.dismiss();
+                            }
+                        }).show();
     }
 
     private void newGame() {
@@ -152,7 +165,7 @@ public class LifeCounter extends Activity {
             }
         }
     }
-    
+
     private void commitPendingChanges() {
         for (int i = 0; i < Constants.MAX_PLAYERS; ++i) {
             if (lifeLayout[i] != null) {
@@ -170,7 +183,7 @@ public class LifeCounter extends Activity {
 
     private void setupLayouts() {
         numPlayers = getNumPlayersFromPreferences();
-        
+
         switch (numPlayers) {
         case 1:
             setContentView(R.layout.main_1_player);
@@ -186,18 +199,19 @@ public class LifeCounter extends Activity {
             break;
         default:
             setContentView(R.layout.main_2_player);
-            break;                
+            break;
         }
-        
-        lifeLayout[0] = (LifeLayout)findViewById(R.id.player_1_layout);
-        lifeLayout[1] = (LifeLayout)findViewById(R.id.player_2_layout);
-        lifeLayout[2] = (LifeLayout)findViewById(R.id.player_3_layout);
-        lifeLayout[3] = (LifeLayout)findViewById(R.id.player_4_layout);
-    }    
 
-    private int getNumPlayersFromPreferences() {        
+        lifeLayout[0] = (LifeLayout) findViewById(R.id.player_1_layout);
+        lifeLayout[1] = (LifeLayout) findViewById(R.id.player_2_layout);
+        lifeLayout[2] = (LifeLayout) findViewById(R.id.player_3_layout);
+        lifeLayout[3] = (LifeLayout) findViewById(R.id.player_4_layout);
+    }
+
+    private int getNumPlayersFromPreferences() {
         try {
-            return Integer.parseInt(sharedPreferences.getString(Constants.NUM_PLAYERS_KEY, "2"));
+            return Integer.parseInt(sharedPreferences.getString(
+                    Constants.NUM_PLAYERS_KEY, "2"));
         } catch (NumberFormatException e) {
             return 2;
         }
@@ -209,15 +223,16 @@ public class LifeCounter extends Activity {
                 outState.putSerializable(Constants.MODEL_SAVE_KEY[i],
                         lifeLayout[i].getModelForSaving());
             }
-        }        
+        }
     }
 
     private void restoreModelsFromBundle(Bundle savedInstanceState) {
         for (int i = 0; i < Constants.MAX_PLAYERS; ++i) {
-            if (lifeLayout[i] != null &&
-                    savedInstanceState.containsKey(Constants.MODEL_SAVE_KEY[i])) {
-                lifeLayout[i].setModelFromSave(
-                        (LifeModel)savedInstanceState.getSerializable(Constants.MODEL_SAVE_KEY[i]));
+            if (lifeLayout[i] != null
+                    && savedInstanceState
+                            .containsKey(Constants.MODEL_SAVE_KEY[i])) {
+                lifeLayout[i].setModelFromSave((LifeModel) savedInstanceState
+                        .getSerializable(Constants.MODEL_SAVE_KEY[i]));
             }
         }
     }
