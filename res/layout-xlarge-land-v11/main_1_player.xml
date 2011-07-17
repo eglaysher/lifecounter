@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lifeLayout="http://schemas.android.com/apk/res/org.elliotglaysher.lifecounter"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:padding="10dip"
+    android:orientation="horizontal">
+    
+    <LinearLayout android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight=".33">
+    </LinearLayout>
+
+    <org.elliotglaysher.lifecounter.widgets.LifeLayout
+        android:id="@+id/player_1_layout"
+        android:layout_height="fill_parent"
+        android:layout_width="0dip"
+        android:layout_weight=".33"
+        android:orientation="vertical"
+        lifeLayout:nameShown="false" />
+        
+    <LinearLayout android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight=".33">
+    </LinearLayout>
+</LinearLayout>
