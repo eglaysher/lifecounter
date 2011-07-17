@@ -69,8 +69,14 @@ public class LifeLayout extends LinearLayout {
     }
 
     public void newGame() {
-        int starting_life = Integer.parseInt(sharedPreferences.getString(
-                "starting_life", "20"));
+        int starting_life = 20;
+        try {
+            starting_life = Integer.parseInt(sharedPreferences.getString(
+                    "starting_life", "20"));
+        } catch (Exception e) {
+            // Do nothing. If we can't parse this, we already have the correct
+            // value.
+        }
 
         life = new LifeModel(starting_life);
         lifeHistory.setModel(life);

@@ -75,11 +75,10 @@ public class Coin2DView extends ImageView implements View.OnClickListener,
             boolean new_coin_value = generator.nextBoolean();
             startAnimation(shrink_animation);
 
-            spins_remaining = 1;
             if (new_coin_value == coin_value)
-                spins_remaining += 1;
+                spins_remaining = 2;
             else
-                spins_remaining += 2;
+                spins_remaining = 3;
 
             coin_value = new_coin_value;
             startAnimation(shrink_animation);
