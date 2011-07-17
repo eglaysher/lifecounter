@@ -1,12 +1,13 @@
-package org.elliotglaysher.lifecounter.coin2d;
+package org.elliotglaysher.lifecounternonfree;
 
-import org.elliotglaysher.lifecounter.LifeCounter;
+import java.util.List;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.preference.PreferenceActivity;
 import android.view.MenuItem;
 
-public class Coin2DActivityHC extends Coin2DActivity {
+public class SettingsHC extends PreferenceActivity {
     @Override
     protected void onStart() {
         super.onStart();
@@ -26,5 +27,10 @@ public class Coin2DActivityHC extends Coin2DActivity {
         default:
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBuildHeaders(List<Header> target) {
+        loadHeadersFromResource(R.xml.honeycomb_preference_headers, target);
     }
 }

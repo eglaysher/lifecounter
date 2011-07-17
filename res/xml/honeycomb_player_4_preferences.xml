@@ -2,12 +2,12 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:title="@string/player_4_label"
 	android:key="player_4_screen">
-	<org.elliotglaysher.lifecounter.widgets.DefaultEditTextPreference
+	<org.elliotglaysher.lifecounternonfree.widgets.DefaultEditTextPreference
 		android:dialogTitle="@string/player_name_label"
 		android:key="player_4_name"
 		android:title="@string/player_name_label"
 		android:defaultValue="@string/player_4_label">
-	</org.elliotglaysher.lifecounter.widgets.DefaultEditTextPreference>
+	</org.elliotglaysher.lifecounternonfree.widgets.DefaultEditTextPreference>
 	<ListPreference
 		android:entries="@array/themes"
 		android:entryValues="@array/theme_values"

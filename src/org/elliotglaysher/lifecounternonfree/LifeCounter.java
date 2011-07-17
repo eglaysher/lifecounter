@@ -14,11 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.elliotglaysher.lifecounter;
+package org.elliotglaysher.lifecounternonfree;
 
-import org.elliotglaysher.lifecounter.coin2d.Coin2DActivity;
-import org.elliotglaysher.lifecounter.coin2d.Coin2DActivityHC;
-import org.elliotglaysher.lifecounter.widgets.LifeLayout;
+import org.elliotglaysher.lifecounternonfree.coin2d.Coin2DActivity;
+import org.elliotglaysher.lifecounternonfree.coin2d.Coin2DActivityHC;
+import org.elliotglaysher.lifecounternonfree.widgets.LifeLayout;
 
 import android.app.Activity;
 import android.app.AlertDialog;

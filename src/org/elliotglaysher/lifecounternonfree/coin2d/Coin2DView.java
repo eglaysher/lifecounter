@@ -14,11 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.elliotglaysher.lifecounter.coin2d;
+package org.elliotglaysher.lifecounternonfree.coin2d;
 
 import java.util.Random;
 
-import org.elliotglaysher.lifecounter.R;
+import org.elliotglaysher.lifecounternonfree.R;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

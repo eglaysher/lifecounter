@@ -25,12 +25,12 @@
 			<PreferenceCategory
 				android:title="@string/player_1_label"
 				android:key="player_1_cat">
-				<org.elliotglaysher.lifecounter.widgets.DefaultEditTextPreference
+				<org.elliotglaysher.lifecoutnernonfree.widgets.DefaultEditTextPreference
 					android:dialogTitle="@string/player_name_label"
 					android:key="player_1_name"
 					android:title="@string/player_name_label"
 					android:defaultValue="@string/player_1_label">
-				</org.elliotglaysher.lifecounter.widgets.DefaultEditTextPreference>
+				</org.elliotglaysher.lifecoutnernonfree.widgets.DefaultEditTextPreference>
 				<ListPreference
 					android:entries="@array/themes"
 					android:entryValues="@array/theme_values"
@@ -48,12 +48,12 @@
 			<PreferenceCategory
 				android:title="@string/player_2_label"
 				android:key="player_2_cat">
-				<org.elliotglaysher.lifecounter.widgets.DefaultEditTextPreference
+				<org.elliotglaysher.lifecoutnernonfree.widgets.DefaultEditTextPreference
 					android:dialogTitle="@string/player_name_label"
 					android:key="player_2_name"
 					android:title="@string/player_name_label"
 					android:defaultValue="@string/player_2_label">
-				</org.elliotglaysher.lifecounter.widgets.DefaultEditTextPreference>
+				</org.elliotglaysher.lifecoutnernonfree.widgets.DefaultEditTextPreference>
 				<ListPreference
 					android:entries="@array/themes"
 					android:entryValues="@array/theme_values"
@@ -71,12 +71,12 @@
 			<PreferenceCategory
 				android:title="@string/player_3_label"
 				android:key="player_3_cat">
-				<org.elliotglaysher.lifecounter.widgets.DefaultEditTextPreference
+				<org.elliotglaysher.lifecoutnernonfree.widgets.DefaultEditTextPreference
 					android:dialogTitle="@string/player_name_label"
 					android:key="player_3_name"
 					android:title="@string/player_name_label"
 					android:defaultValue="@string/player_3_label">
-				</org.elliotglaysher.lifecounter.widgets.DefaultEditTextPreference>
+				</org.elliotglaysher.lifecoutnernonfree.widgets.DefaultEditTextPreference>
 				<ListPreference
 					android:entries="@array/themes"
 					android:entryValues="@array/theme_values"
@@ -94,12 +94,12 @@
 			<PreferenceCategory
 				android:title="@string/player_4_label"
 				android:key="player_4_cat">
-				<org.elliotglaysher.lifecounter.widgets.DefaultEditTextPreference
+				<org.elliotglaysher.lifecoutnernonfree.widgets.DefaultEditTextPreference
 					android:dialogTitle="@string/player_name_label"
 					android:key="player_4_name"
 					android:title="@string/player_name_label"
 					android:defaultValue="@string/player_4_label">
-				</org.elliotglaysher.lifecounter.widgets.DefaultEditTextPreference>
+				</org.elliotglaysher.lifecoutnernonfree.widgets.DefaultEditTextPreference>
 				<ListPreference
 					android:entries="@array/themes"
 					android:entryValues="@array/theme_values"

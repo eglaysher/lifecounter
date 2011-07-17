@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.elliotglaysher.lifecounter.coin2d;
+package org.elliotglaysher.lifecounternonfree.coin2d;
 
-import org.elliotglaysher.lifecounter.R;
+import org.elliotglaysher.lifecounternonfree.R;
 
 import android.app.Activity;
 import android.os.Bundle;
