@@ -3,7 +3,9 @@
       package="org.elliotglaysher.lifecounter"
       android:versionCode="8" android:versionName="1.2">
     <uses-sdk android:targetSdkVersion="11" android:minSdkVersion="4"/>
-    <application android:icon="@drawable/icon" android:label="@string/app_name">
+    <application android:icon="@drawable/icon"
+                 android:label="@string/app_name"
+                 android:hardwareAccelerated="true">
         <activity android:name=".LifeCounter"
                   android:label="@string/app_name">
             <intent-filter>
@@ -20,6 +22,9 @@
         <activity android:name=".coin2d.Coin2DActivity"
                   android:label="@string/coin_label"
                   android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <activity android:name=".coin2d.Coin2DActivityHC"
+                  android:label="@string/coin_label">
         </activity>
     </application>
     

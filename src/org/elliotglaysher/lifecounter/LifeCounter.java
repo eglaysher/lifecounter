@@ -17,6 +17,7 @@
 package org.elliotglaysher.lifecounter;
 
 import org.elliotglaysher.lifecounter.coin2d.Coin2DActivity;
+import org.elliotglaysher.lifecounter.coin2d.Coin2DActivityHC;
 import org.elliotglaysher.lifecounter.widgets.LifeLayout;
 
 import android.app.Activity;
@@ -131,7 +132,11 @@ public class LifeCounter extends Activity {
             return true;
         case R.id.coin_menu:
             commitPendingChanges();
-            startActivity(new Intent(this, Coin2DActivity.class));
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+                startActivity(new Intent(this, Coin2DActivity.class));
+            } else {
+                startActivity(new Intent(this, Coin2DActivityHC.class));
+            }
             break;
         case R.id.settings_menu:
             commitPendingChanges();
