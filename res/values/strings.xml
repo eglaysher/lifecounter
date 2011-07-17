@@ -31,7 +31,7 @@
     <!-- About dialog strings -->
     <string name="about_title">About Life Counter</string>
     <string name="about_text_1">Life Counter is a small utility to help you keep track of the score in the card game <i>Magic: The Gathering</i>.</string>
-    <string name="about_text_2">Life Counter is © 2009 Elliot Glaysher.</string>
+    <string name="about_text_2">Life Counter is © 2009-2011 Elliot Glaysher.</string>
     <string name="about_text_3">http://www.elliotglaysher.org/lifecounter/</string>
     <string name="about_text_4">This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
