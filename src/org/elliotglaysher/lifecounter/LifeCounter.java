@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
@@ -134,7 +135,11 @@ public class LifeCounter extends Activity {
             break;
         case R.id.settings_menu:
             commitPendingChanges();
-            startActivity(new Intent(this, Settings.class));
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+                startActivity(new Intent(this, Settings.class));
+            } else {
+                startActivity(new Intent(this, SettingsHC.class));
+            }
             return true;
         case R.id.about_menu:
             commitPendingChanges();

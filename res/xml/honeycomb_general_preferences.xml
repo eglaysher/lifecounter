@@ -1,0 +1,11 @@
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<ListPreference
+		android:key="num_players"
+		android:title="@string/number_players"
+		android:entries="@array/num_players"
+		android:entryValues="@array/num_players"
+		android:dialogTitle="@string/number_players"
+		android:defaultValue="2"
+		/>
+</PreferenceScreen>

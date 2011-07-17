@@ -1,0 +1,19 @@
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:title="@string/player_3_label"
+	android:key="player_3_screen">
+	<org.elliotglaysher.lifecounter.widgets.DefaultEditTextPreference
+		android:dialogTitle="@string/player_name_label"
+		android:key="player_3_name"
+		android:title="@string/player_name_label"
+		android:defaultValue="@string/player_3_label">
+	</org.elliotglaysher.lifecounter.widgets.DefaultEditTextPreference>
+	<ListPreference
+		android:entries="@array/themes"
+		android:entryValues="@array/theme_values"
+		android:dialogTitle="@string/player_theme_label"
+		android:key="player_3_theme"
+		android:title="@string/player_theme_label"
+		android:defaultValue="Black">
+	</ListPreference>
+</PreferenceScreen>

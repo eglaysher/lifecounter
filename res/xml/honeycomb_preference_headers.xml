@@ -1,0 +1,22 @@
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+		<header android:fragment="org.elliotglaysher.lifecounter.SettingsGeneralFragment"
+				android:title="@string/general">
+			<extra android:name="resource" android:value="honeycomb_general_preferences" />
+		</header>
+		<header android:fragment="org.elliotglaysher.lifecounter.SettingsGeneralFragment"
+				android:title="@string/player_1_label">
+			<extra android:name="resource" android:value="honeycomb_player_1_preferences" />
+		</header>
+		<header android:fragment="org.elliotglaysher.lifecounter.SettingsGeneralFragment"
+				android:title="@string/player_2_label">
+			<extra android:name="resource" android:value="honeycomb_player_2_preferences" />
+		</header>
+		<header android:fragment="org.elliotglaysher.lifecounter.SettingsGeneralFragment"
+				android:title="@string/player_3_label">
+			<extra android:name="resource" android:value="honeycomb_player_3_preferences" />
+		</header>
+		<header android:fragment="org.elliotglaysher.lifecounter.SettingsGeneralFragment"
+				android:title="@string/player_4_label">
+			<extra android:name="resource" android:value="honeycomb_player_4_preferences" />
+		</header>
+</preference-headers>
