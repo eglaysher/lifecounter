@@ -27,19 +27,17 @@ import java.util.Vector;
  * @author glaysher@umich.edu
  */
 public class LifeModel implements Serializable {
-    static final private int LIFE_START = 20;
-    
     private int currentLifeTotal;
     private int committedLifeTotal;
-    private Vector<String> lifeHistory;
+    private final Vector<String> lifeHistory;
 
     private boolean valueCommitted;
-    
-    public LifeModel() {
-        currentLifeTotal = LIFE_START;
-        committedLifeTotal = LIFE_START;
+
+    public LifeModel(int starting_life) {
+        currentLifeTotal = starting_life;
+        committedLifeTotal = starting_life;
         lifeHistory = new Vector<String>();
-        lifeHistory.add(String.valueOf(LIFE_START));
+        lifeHistory.add(String.valueOf(starting_life));
         valueCommitted = true;
     }
 
@@ -50,12 +48,12 @@ public class LifeModel implements Serializable {
     public List<String> getHistoryList() {
         return lifeHistory;
     }
-    
+
     public void setLife(int newTotal) {
         if (currentLifeTotal != newTotal) {
             StringBuilder newLifeString = new StringBuilder();
             int difference = newTotal - committedLifeTotal;
-            
+
             newLifeString.append(newTotal);
             newLifeString.append(" (");
 
@@ -72,7 +70,7 @@ public class LifeModel implements Serializable {
                 lifeHistory.add(newLifeString.toString());
             } else {
                 lifeHistory.remove(lifeHistory.size() - 1);
-                
+
                 if (difference != 0) {
                     lifeHistory.add(newLifeString.toString());
                 } else {
@@ -82,18 +80,18 @@ public class LifeModel implements Serializable {
             }
         }
     }
-    
+
     /**
-     * Tells the model that new modifications to the life score should be
-     * placed on their own line.
+     * Tells the model that new modifications to the life score should be placed
+     * on their own line.
      */
     public void commitValue() {
         valueCommitted = true;
         committedLifeTotal = currentLifeTotal;
     }
-    
+
     /**
-     *  I don't know what this is, but java wants it.
+     * I don't know what this is, but java wants it.
      */
     private static final long serialVersionUID = -5771572687170326848L;
 }

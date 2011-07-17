@@ -10,6 +10,11 @@
 			android:dialogTitle="@string/number_players"
 			android:defaultValue="2"
 			/>
+		<EditTextPreference
+			android:key="starting_life"
+			android:title="@string/starting_life"
+			android:numeric="integer"
+			android:defaultValue="20"/>
 	</PreferenceCategory>
 	<PreferenceCategory
 		android:title="@string/player_preferences"

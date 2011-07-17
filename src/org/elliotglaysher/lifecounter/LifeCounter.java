@@ -116,8 +116,6 @@ public class LifeCounter extends Activity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 
-        MenuCompat.setShowAsAction(menu.findItem(R.id.new_game_menu),
-                SHOW_AS_ACTION);
         MenuCompat.setShowAsAction(menu.findItem(R.id.coin_menu),
                 SHOW_AS_ACTION);
 
