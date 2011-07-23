@@ -22,6 +22,7 @@ public class SettingsHC extends PreferenceActivity {
             // app icon in Action Bar clicked; go home
             Intent intent = new Intent(this, LifeCounter.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             return true;
         default:
