@@ -42,12 +42,6 @@ public class Coin2DActivity extends Activity {
     }
 
     @Override
-    protected void onPause() {
-        coin.stopAnimation();
-        super.onPause();
-    }
-
-    @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         coin.setCoinValue(savedInstanceState.getBoolean(CURRENT_STATE));
